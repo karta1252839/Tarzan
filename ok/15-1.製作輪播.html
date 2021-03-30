@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+        #gallery {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        #imgs {
+            position: absolute;
+            height: 300px;
+        }
+
+        #imgs>img {
+            width: 400px;
+            height: 300px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gallery">
+        <div id="imgs">
+            <img src="./0551.jpg" alt="">
+            <img src="./0552.jpg" alt="">
+            <img src="./0553.jpg" alt="">
+            <img src="./0554.jpg" alt="">
+            <img src="./0555.jpg" alt="">
+        </div>
+    </div>
+    <input type="button" value="&lt;" id="left">
+    <input type="button" value="&gt;" id="right">
+
+    <script>
+        $(document).ready(function () {
+            let now = 0;
+            const total = $('#imgs img').length;
+            $('#imgs').css('width', total * 400);
+
+            $('#right').click(function () {
+                if (now < total - 1) {
+                    now++;
+                    const move = now * 400;
+                    $('#imgs').stop(true, true);
+                    // -${move + 25} 回彈;
+                    $('#imgs').animate({ left: `-${move + 25}px` }, 1000).animate({ left: `-${move}px` }, 100);
+                }
+            });
+            $('#left').click(function () {
+                if (now > 0) {
+                    now--;
+                    const move = now * 400;
+                    $('#imgs').stop(true, true);
+                    // 判斷第一張 回彈出現問題
+                    if (move == 0) {
+                        $('#imgs').animate({ left: `${move + 25}px` }, 1000).animate({ left: `-${move}px` }, 100);
+                    }else{
+                        $('#imgs').animate({ left: `-${move + 25}px` }, 1000).animate({ left: `-${move}px` }, 100);
+                    }
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

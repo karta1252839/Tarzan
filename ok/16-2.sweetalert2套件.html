@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- SweetAlert2 -->
+    <!-- https://sweetalert2.github.io/ -->
+    <script>
+        Swal.fire({
+            // icon
+            icon: 'success',
+            // title
+            title: '標題',
+            // text
+            text: '內文',
+            // 文字 & html內文(只能二選一)
+            html: '<b>html內文</b>',
+            // 是否有取消按鈕
+            showCancelButton: true,
+            // 按鈕文字改為中文
+            confirmButtonText: '確定',
+            cancelButtonText: '取消',
+            // 輸入input: 'text',
+            // inputAttributes: {
+            //     autocapitalize: 'off'
+            // },
+        }).then((result) => {
+            // then 回報使用者使用狀況
+            // console.log(result);
+            // 如果確定
+            if (result.value) {
+                Swal.fire({
+                    title: result.value,
+                })
+            } else if (result.dismiss) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '取消',
+                })
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

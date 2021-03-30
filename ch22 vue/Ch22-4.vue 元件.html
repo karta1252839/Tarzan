@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+
+    </style>
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 可以用for或一直加tag -->
+        <counter v-for="n in 5"></counter>
+        <counter></counter>
+        <!-- 傳遞名稱為 tex t的文字進元件 -->
+        <proptest type="天氣不好下雨"></proptest>
+        <!-- 也可以用 v-bind 把 data 傳進元件 -->
+        <proptest :text="msg"></proptest>
+        <!-- :data 資料傳入 -->
+        <post v-for="post in posts" :data="post" @good="handleGood"></post>
+        <!-- comp 子元件戶傳 -->
+        <comp1></comp1>
+        <comp2></comp2>
+    </div>
+
+    <!-- 宣告元件的 HTML 部分 -->
+    <script type="text/x-template" id="counter">
+        <button @click="count++">你點擊了 {{ count }} 次</button>
+    </script>
+
+    <script type="text/x-template" id="proptest">
+        <div>
+            {{ text }}
+        </div>
+    </script>
+
+    <script type="text/x-template" id="post">
+        <div>
+            <h1>標題: {{data.title}} </h1>
+            <h3>作者: {{data.author}} </h3>
+            <p>{{data.content}} </p>
+            <button @click="good">讚</button>
+        </div>
+    </script>
+
+    <!-- comp 子元件戶傳 -->
+    <!-- 二行以上必須用div -->
+    <script type="text/x-template" id="comp1">
+        <div class="">
+            <input type="text" v-model="text" >
+            <button @click="sendData"></button>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="comp2">
+        <p> {{text}} </p>
+    </script>
+
+    <script>
+        // 子元件互傳可以建立一個 eventBus 幫忙，節省傳到外面再傳進去的程式碼 這種寫法是通用的，也可用於外傳內，內傳外
+        // 只傳遞事件，不需要顯示在網頁上
+        const eventBus = new Vue()
+
+        // 'counter' VueName
+        Vue.component('counter', {
+            // idName
+            template: '#counter',
+            // data 寫成 function
+            data() {
+                return {
+                    count: 0
+                }
+            }
+            // ...其他
+        })
+
+        Vue.component('proptest', {
+            template: '#proptest',
+            // props外面傳進元件的資料有哪些
+            props: {
+                text: {
+                    type: String,
+                    default: ''
+                }
+            }
+        })
+
+        Vue.component('post', {
+            template: '#post',
+            props: {
+                data: Object
+            },
+            mounted: {
+                good() {
+                    // 子元件傳出則需要使用 $emit
+                    // 子元件觸發事件，事件名為 good ， 傳出作者資料
+                    this.$emit('good', this.data.author)
+                }
+            }
+        })
+
+        Vue.component('comp1', {
+            template: '#comp1',
+            data() {
+                return {
+                    text=''
+                }
+            },
+            mounted: {
+                sendData() {
+                    // eventBus 觸發事件
+                    eventBus.$emit('sendData', this.text)
+                }
+            }
+        })
+
+        Vue.component('comp2', {
+            template: '#comp2',
+            data() {
+                return {
+                    text=''
+                }
+            },
+            mounted: {
+                // 監聽 eventBus 的 sendData 事件
+                sendData() {
+                    eventBus.$on('sendData', (data) => {
+                        this.text = data
+                    })
+                }
+            }
+        })
+
+
+        new Vue({
+            el: '#app',
+            name: 'app',
+            data: {
+                msg: 'aaa',
+                posts: [
+                    {
+                        title: '標題一',
+                        author: 'aaa',
+                        content: 'aSchool'
+                    },
+                    {
+                        title: '標題二',
+                        author: 'bbb',
+                        content: 'bSchool'
+                    },
+                ]
+            },
+            mounted: {
+                handleGood(author) {
+                    alert(` 你按了 ${author} 的 ${title} 的文章讚 `)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

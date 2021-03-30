@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 第一種用法 (如果一個出錯全錯)
+        /*
+        try {
+            // 用不存在的 function 除發錯誤
+            alert('aaa');
+            console.log('bbb');
+        } catch (error) {
+            // 因為上面出錯，會直接跳到catch
+            console.log(error);
+            console.log(error.name);
+            console.log(error.message);
+            if (error.message.includes('is not defined')) {
+                console.log('使用了未定義的函式');
+            }
+        }
+        */
+
+        // 第二種用法 (自訂義錯誤)
+        // 只接受五到十的數字
+        const validate = (input) => {
+            // 順序1 驗證成功失敗為 否，錯誤訊息一開始為 空
+            let re = { ok: false, msg: '' };
+            // 順序2.當發生if判斷後 丟出錯誤到catch，如果都沒有 re.ok = true，並以return重新到下方function重新判斷是否 OK
+            try {
+                // 如果沒有丟東西進 function ，或是丟空的東西進來
+                if (input.lenght === 0 || input === undefined) {
+                    // 手動拋出錯誤及訊息
+                    throw new Error('不能為空');
+                }
+                else if (isNaN(input)) {
+                    throw new Error('不是數字');
+                }
+                else if (input < 5) {
+                    throw new Error('太小');
+                }
+                else if (input > 10) {
+                    throw new Error('太大');
+                }
+                re.ok = true;
+            } catch (error) {
+                console.log(error);
+                console.log(error.name);
+                console.log(error.message);
+                re.msg = error.message;
+            }
+            return re;
+        }
+        const isok = validate(7);
+        console.log(isok);
+    </script>
+</body>
+
+</html>

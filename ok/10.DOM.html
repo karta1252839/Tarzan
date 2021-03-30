@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="mydiv">
+        qjejpqjqjpejpqwe
+    </div>
+
+    <script>
+        // 用 CLASS 抓 HTML 結果是陣列
+        // 如果你一次符合多個 CLASS 的元素以空白分隔 ('myclass1 myclass2')
+        const myClass1 = document.getElementsByClassName('myclass1');
+        for (const element of myClass1) {
+            element.style.color = 'red';
+        }
+
+        // 用CSS選擇器抓HTML元素
+        // queryselectorAll取全部, 結果是陣列
+        // querySelector取第一個
+        const link = document.querySelectorAll('#link');
+        console.log(link.href);
+        console.log(link.getAttribute('href'));
+        link.setAttribute('href', 'http://fb.com');
+        // 用.的速度比較快(不知道為啥)
+        link.href = 'http://fb.com';
+
+        // remove 移除
+        const byeBye = document.getElementById('byeBye');
+        byeBye.remove();
+
+        // innerHTML 會將HTML 內容以文字輸出
+        const ui1 = document.getElementById('ul1');
+        console.log(ui1.innerHTML);
+
+        // [0]選擇次 ui1可不用document
+        const a_in_ul1 = ui1.getElementsByTagName('a')[0];
+        a_in_ul1.parentElement.style.background = "green";
+
+        // 抓取上一層 和 下一層 的所有同輩
+        const myli = document.getElementById('myli');
+        myli.previousElementSibling.style.color = 'blue';
+        myli.nextElementSibling.style.color = 'pink';
+
+        const myp = document.getElementById('myp');
+        // className 寫出裡面的 class
+        console.log(myp.className);
+        myp.classList.add('myp1');
+        myp.classList.remove('myp1');
+        myp.classList.replace('myp1', 'myp2');
+        myp.classList.toggle('myp5');
+
+        // 前後插入html 有點像似假元素
+        const mydiv = document.getElementById('mydiv');
+        mydiv.insertAdjacentHTML = ('afterbegin','<i>afterbegin</i>');
+        mydiv.insertAdjacentHTML = ('afterend','<i>afterend</i>');
+        mydiv.insertAdjacentHTML = ('beforebegin','<i>beforebegin</i>');
+        mydiv.insertAdjacentHTML = ('beforeend','<i>beforeend</i>');
+
+        // DOM 練習(製作倒數計時 輸入秒數 僅有一行文字顯示剩餘秒數 秒數不能變負數用藍色 時間到時變紅色)
+
+    </script>
+    
+</body>
+
+</html>

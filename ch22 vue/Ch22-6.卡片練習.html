@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+
+    </style>
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1>便當</h1>
+        <h3>總共 {{goods}} 個讚</h3>
+        <card v-for="card in cards" :data="card" v-on:good="handleGood"></card>
+    </div>
+
+    <script type="text/x-template" id="card">
+        <div class="card">
+            <img :src="data.img" alt="">
+            <h1> {{data.title}} </h1>
+            <button @click="toggleGood"> {{ good ? '收回讚' : '讚' }} </button>
+        </div>
+    </script>
+
+    <script>
+        Vue.component('card', {
+            template: '#card',
+            data() {
+                return {
+                    good = false
+                }
+            },
+            prompt: {
+                data: Object
+            },
+            mounted: {
+                toggleGood() {
+                    this.good = !this.good
+                    this.$emit = ('good', this.good)
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            name: 'app',
+            data: {
+                goods: 0,
+                cards: [
+                    {
+                        img: './1.jpg',
+                        title='太師傅'
+                    },
+                    {
+                        img: './2.jpg',
+                        title='吉野烤肉飯'
+                    },
+                ]
+            },
+            methods: {
+                handleGood(good) {
+                    if (good) {
+                        this.goods++
+                    } else {
+                        this.goods--
+                    }
+                }
+            },
+            computed: {
+
+            }
+        })
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>

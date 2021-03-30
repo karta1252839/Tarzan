@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // fetch (需使用 Promise 不然會寫很多)
+        fetch('https://kktix.com/events.json', { method: 'GET' })
+            .then(response => {
+                // 可以透過 .blob(), .json(), .text() 轉成可用的資訊
+                return response.json();
+            })
+            // 成功執行的 function
+            .then(json => {
+                console.log(json);
+            })
+            // 錯誤時執行的 function
+            .catch(error => {
+                console.log(error);
+            })
+            // 不管成功失敗都執行
+            .finally(() => {
+                console.log('final');
+            })     
+    </script>
+</body>
+
+</html>

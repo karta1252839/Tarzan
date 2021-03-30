@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <!-- datatables  -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.23/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.23/datatables.min.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- dataTables套件(他一定要有JQ) Editor要付費 -->
+    <!-- https://datatables.net/ -->
+
+    <!-- 必須要有一個 table thead tbody -->
+    <table id="table">
+        <thead>
+            <th>標題</th>
+            <th>時間</th>
+            <th>主辦</th>
+        </thead>
+        <tbody>
+            <td>123</td>
+            <td>456</td>
+            <td>789</td>
+        </tbody>
+    </table>
+    <!-- ajax data (tbody可以快速讀完，但要跟他的AJAX格式一樣)-->
+    <!-- https://datatables.net/examples/data_sources/ajax.html -->
+
+    <script>
+        // 大小寫有差有 有的函示沒辦法使用
+        $('#table').DataTable();
+    </script>
+</body>
+
+</html>

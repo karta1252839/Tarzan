@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>代辦清單</h1>
+    <input type="text" name="" id="input">
+    <input type="button" value="" id="btn">
+
+    <ul id="list"></ul>
+    <script>
+        // 因為是append所以不可以使用btn 
+        $(document).ready(function () {
+            $('#btn').click(function () {
+                $('#list').append('<li>' + $('#input').val() + '<input type="button" value="x" class="del"></li>');
+                // 再把原本input val改為空
+                $('#input').val('');
+
+                // 1.或者只能加在btn click函式內
+                // $('.del').click()
+            });
+
+            // JQ 的事件不需要向原生 JS 一樣寫 for
+            // 2. .on(事件,過濾,function)
+            $('#list').on('click', '.del', function () {
+                $(this).parent().remove();
+                // on 指的 this 是 .del-------
+                console.log($(this));
+            });
+
+            // 3. .click(過濾,function)
+            // 2 和 3只差在於 事件名on||click，並且差別於-------標記的位置
+            $('#list').click('.del', function () {
+                $(this).parent().remove();
+                // click 指的 this 是 #list-------
+                console.log($(this));
+            });
+        });
+    </script>
+    
+</body>
+
+</html>

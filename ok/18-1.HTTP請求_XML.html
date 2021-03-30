@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // GET------------------------------------------------------
+        // 建立 xhr(直接開檔案他沒辦法送，要用 GO LIVE)
+        let xhr = new XMLHttpRequest();
+        // 設定請求方式與網址
+        xhr.open('get', 'https://kktix.com/events.json');
+        // 設定成功時執行的 function
+        xhr.onload = function () {
+            let json = JSON.parse(xhr.responseText);
+            console.log(json.entry[0].title);
+        }
+
+        // 設定失敗時執行的 function
+        xhr.onerror = function (error) {
+            console.log(error);
+        }
+
+        // 送出請求
+        xhr.send();
+
+        // POST------------------------------------------------------
+        let xhr2 = new XMLHttpRequest();
+
+        xhr2.open('post', 'https://kktix.com/events.json');
+        xhr2.setRequestHeader('Content-type', 'application/json');
+
+        xhr2.onload = function () {
+            let json = JSON.parse(xhr2.responseText);
+            console.log(json.entry[0].title);
+        }
+
+        xhr2.onerror = function (error) {
+            console.log(error);
+        }
+
+        // JSON.stringify 將陣列轉文字
+        xhr2.send(JSON.stringify({
+            'title': 'aaa',
+            'body': 'bbbbb',
+            'userID': 1,
+        }));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .red {
+            color: red;
+        }
+
+        .big {
+            font-size: 50px;
+        }
+    </style>
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- data ---------------------------------------------- -->
+        <!-- HTML 部分 (二種都可) -->
+        <p>{{msg}}</p>
+        <p v-text="msg"></p>
+
+        <!-- 連結用 -->
+        <p v-html="html"></p>
+
+        <!-- if(符合才顯示) -->
+        <p v-if="condition === 1">數字是1</p>
+        <p v-else-if="condition === 2">數字是2</p>
+        <p v-else>數字是其他</p>
+        <!-- show(不符合則加上d-none，但不消失code) -->
+        <p v-show="condition"></p>
+
+        <!-- v-for(index 索引，key 關鍵名) -->
+        <ul>
+            <li v-for="fruit in fruits">
+                {{fruit}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(fruit, index) in fruits">
+                {{ index + 1 + " - " + fruit}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(web, key, index) in webs">
+                {{ index + " - " + key + " - " + web }}
+            </li>
+        </ul>
+
+        <!-- img -->
+        <!-- <img v-bind:src="img" alt="" width="100px"> -->
+        <!-- 通常用簡寫 -->
+        <img :src="img" alt="" width="100px">
+        <!-- img + for -->
+        <!-- <img v-for="image in images" :src="image" alt="" width="100px"> -->
+
+        <!-- style -->
+        <p :style="style">aaa</p>
+        <!-- <p :style="{backgroundColor: 'red',fontSize: 'large'}">aaa</p> -->
+
+        <!-- class -->
+        <p :class="myClass">aaa</p>
+        <!-- <p :class="{red: true, big: false}">aaa</p> -->
+
+        <!-- model = 原生value && @keydown(@keydown.按鍵名)-->
+        <input type="text" v-model="text" @keydown.enter="add">
+        <p>{{text}}</p>
+
+        <!-- function ( methods ) ---------------------------------------------- -->
+        <input type="button" value="按鈕" v-on:click="add">
+        <input type="button" value="按鈕" @click="add">
+
+        <!-- @click.prevent 阻止事件發生 -->
+        <a href="https://zh-tw.facebook.com/" @click.prevent="click">FB</a>
+
+        <!-- function ( computed 計算產生的function ) ---------------------------------------------- -->
+        <p>我有 {{count}} 個水果</p>
+    </div>
+
+    <!-- 事件，使用 v-on:事件 或是 @事件
+    事件有 .prevent .stop 修飾符可以用
+    鍵盤事件則有按鍵修飾符，如 @keydown.enter 和 @keydown.13 -->
+    <!-- $ref 可以綁定元素，類似 document.getElementById() -->
+    <h1 ref="mytext">文字文字</h1>
+    <!-- 就可以用 refs.名稱 存取元素
+    需要在 mounted 後使用 -->
+    <!-- this.$refs.mytext -->
+    <!-- $el 代表元件的 HTML，可以用 querySelector() 等存取元素
+    需要在 mounted 後使用 -->
+    <!-- this.$el.querySelector() -->
+
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            // el 將哪個 HTML 元素轉成 Vue 元件
+            el: '#app',
+            // name 給vue區塊取名(未顯示開發工具)
+            name: 'app',
+            // data 元件資料;
+            data: {
+                msg: 'Hello Vue',
+                html: '<a href="https://www.google.com">google</a>',
+                condition: 1,
+                fruits: ['蘋果', '香蕉', '西瓜', '芭樂', '芒果'],
+                webs: {
+                    fb: 'facebook',
+                    yt: 'youtube'
+                },
+                img: 'https://i.ytimg.com/vi/weFmRxQ73-Y/maxresdefault.jpg',
+                // images: [
+                //     'http://dinbendon.kento520.rw/assets/img/pic/1.jpg',
+                //     'http://dinbendon.kento520.rw/assets/img/pic/2.jpg',
+                //     'http://dinbendon.kento520.rw/assets/img/pic/3.jpg',
+                // ],
+                style: {
+                    backgroundColor: 'red',
+                    fontSize: 'large'
+                },
+                myClass: {
+                    red: true,
+                    big: false
+                },
+                text: '',
+
+            },
+            // methods 元件使用到的 function
+            methods: {
+                add() {
+                    if (this.text.length > 0) {
+                        this.fruits.push(this.text)
+                        this.text = ""
+                    }
+                },
+                click(event) {
+                    // alert('沒有跳頁')
+                    alert(event.target.tagName)
+                }
+            },
+            // computed 計算屬性
+            computed: {
+                count() {
+                    return this.fruits.length
+                }
+            }
+            // ...其他
+
+        })
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>

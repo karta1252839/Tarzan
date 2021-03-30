@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+    </style>
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="newItem" type="text" @keydown.enter="add" :style="{ border : ' 10px solid ' + borderColor }">
+        <input type="button" value="新增" @click="add">
+        <ul>
+            <li v-for="item in items">
+                <input type="checkbox" :checked="item.done" @change="toggle(item)">
+                <del v-if="item.done">{{ item.text }}</del>
+                <span v-else>{{ item.text }}</span>
+                <input type="button" value="x" @click="del(index)">
+            </li>
+        </ul>
+    </div>
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            name: 'app',
+            data: {
+                newItem: '',
+                items: []
+            },
+            methods: {
+                add() {
+                    if (this.newItem.length > 2) {
+                        this.items.push({ done: false, text: this.newItem })
+                        this.newItem = ''
+                    }
+                },
+                toggle(item) {
+                    item.done = !item.done
+                },
+                del(index) {
+                    this.items.splice(index, 1)
+                }
+            },
+            computed: {
+                borderColor() {
+                    return (this.newItem.length > 2) ? 'green' : 'red'
+                }
+            },
+            // watch 監聽改變要做什麼事 function
+            watch: {
+                // items() {
+                //     console.log('aaa');
+                // },
+
+                // newItem( newValue, oldValue) {
+                //     console.log('newValue ='+newValue);
+                //     console.log('oldValue ='+oldValue);
+                // },
+
+                // 陣列比較複雜
+                items: {
+                    deep: true,
+                    headLer(newValue, oldValue) {
+                        localStorage.setItem('todo', JSON.stringify(this.items))
+                    }
+                }
+
+            },
+            // mounted (Vue有分生命週期(生命週期都要寫成function)，mounted(當網頁被掛載到網頁上)是其中一)
+            mounted() {
+                const data = localStorage.getItem('todo')
+                if (data !== null) {
+                    this.items = JSON.parse(data)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

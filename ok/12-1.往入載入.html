@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 垂直致中 */
+        .h {
+            line-height: 100vh;
+        }
+
+        /* 橫向致中 */
+        .v {
+            /* img包一個div即可用 */
+            text-align: center;
+        }
+
+        /* 垂直致中(必須包二層div使用) */
+        #loaging {
+            /* 模擬 table */
+            display: table;
+        }
+
+        #loaging-inner {
+            /* table-cell 模擬 td */
+            display: table-cell;
+            /* vertical 要有上一層的 table 和 這一層的 table-cell */
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- loading 載入動畫網址;(付費的路徑:icon/spinner);改為免費則copy code -->
+    <!-- https://loading.io/ -->
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        style="margin: auto; display: block;" width="237px" height="237px" viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid">
+        <g transform="rotate(0 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.9s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(36 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.8s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(72 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.7s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(108 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.6s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(144 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.5s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(180 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.4s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(216 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.3s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(252 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.2s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(288 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="-0.1s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+        <g transform="rotate(324 50 50)">
+            <rect x="46.5" y="21" rx="3.5" ry="6" width="7" height="12" fill="#689cc5">
+                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1s" begin="0s"
+                    repeatCount="indefinite"></animate>
+            </rect>
+        </g>
+    </svg>
+
+    <div class="" id="loaging">
+        <div class="" id="loaging-inner">
+            <img src="./ladg.svg" alt="">
+        </div>
+    </div>
+    <script>
+        // document.onreadystatechange 當載入狀態改變時 => 等同於JQ onload
+        // interactive: 載入完 HTML 標籤時; complete: 整個網頁完成時
+        // -------------------------------------
+        // window.onload 當整個網頁載入完(連圖片都下載完)時
+
+        document.onreadystatechange = () => {
+            // readyState 就緒狀態
+            console.log(document.readyState);
+        }
+
+        window.onload = () => {
+            console.log('window ok');
+        }
+    </script>
+
+</body>
+
+</html>

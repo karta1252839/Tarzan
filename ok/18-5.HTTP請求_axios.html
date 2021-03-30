@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    
+    <script>
+        // axios (Vue 官方推薦的 AJAX 套件)
+        // https://github.com/axios/axios
+        
+        // get-------------------------------
+        axios.get('https://kktix.com/events.json')
+            .then(response => {
+                // 成功
+                console.log(response);
+            })
+            .catch(error => {
+                // 失敗
+                console.log(error);
+            })
+            .then(() => {
+                // 不管成功失敗都執行
+                console.log('請求結束');
+            });
+
+        // post-------------------------------
+        axios.post('https://kktix.com/events.json/post', {
+            'title': 'aaa',
+            'body': 'bbbbb',
+            'userID': 1,
+        })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.error(err);
+            })
+
+            .then(() => {
+                // 不管成功失敗都執行
+                console.log('請求結束');
+            });
+    </script>
+</body>
+
+</html>

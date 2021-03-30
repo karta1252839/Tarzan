@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .onLOagIng {
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 載入跳轉頁面 -->
+    <div id="onLOagIng">
+        <div id="onLOagIng-inner">
+            <img src="./ok/1.瀏覽器可用全部完整事件.png" class="" alt="">
+            <p id="now"></p>
+        </div>
+    </div>
+
+    <script>
+        const onLOagIng = document.getElementById('onLOagIng');
+
+        window.onload = () => {
+            onLOagIng.style.opacity = 0;
+            setTimeout(() => {
+                onLOagIng.style.display = 'none';
+            }, 1000);
+        }
+    </script>
+
+
+
+
+
+    <!-- 練習 猜拳(跟電腦猜拳 電腦隨機 輸贏顯示在ul) -->
+    <!-- 新增的按鈕 原綁定會無效 -->
+    <input class="btn" type="button" value="剪刀">
+    <input class="btn" type="button" value="石頭">
+    <input class="btn" type="button" value="布">
+
+    <ul id="records"></ul>
+
+
+    <script>
+        const btns = document.getElementsByClassName('btn');
+        const records = document.getElementById('records');
+        const options = ['剪刀', '石頭', '布'];
+
+        for (let btn of btns) {
+            let user = btn.value;
+            let rand = options[Math.round(Math.random())];
+            let result = '';
+
+            if (user == rand) {
+                result = '平手';
+            } else if ((user == '剪刀' && rand == '布') || (user == '布' && rand == '石頭') || user == '石頭' && rand == '剪刀') {
+                result = '贏';
+            } else {
+                result = '輸';
+            }
+        }
+        const msg = ` 你出 ${user}，電腦出${rand}，${result}`;
+        alert(msg);
+        records.innerHTML += `<li>${msg}</li>`;
+    </script>
+
+
+
+    <!-- 練習 顏色轉換器 -->
+    <!-- range; min & max可以調整range; value從0開始; -->
+    <input type="range" name="" min="0" max="255" value="0" id="range">
+    <script>
+        const range = document.getElementById('range');
+
+        // 測試使用狀態
+        // range.onclick = () => {
+        //     console.log('click');
+        // }
+        // range.onchange = () => {
+        //     console.log('onchange');
+        // }
+        // range.oninput = () => {
+        //     console.log('oninput');
+        // }
+
+        range.oninput = () => {
+            console.log(range.value);
+        }
+
+    </script>
+</body>
+
+</html>

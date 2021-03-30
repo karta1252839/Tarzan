@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+
+    </style>
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 使用 GitHub Actions 自動編譯部署到 gh-pages 分支 -->
+    <!-- https://github.com/features/actions -->
+    <!-- 這網址用意不懂 -->
+
+
+    <!-- vue開分支 上傳 -->
+    <!-- gh-名稱 分支 -->
+
+    <!-- vue使用上方的上傳(每一次都要重新) 太麻煩可以使用這個自動更動 -->
+    <!-- https://www.travis-ci.com/ -->
+    <!-- 網址設定好後 -->
+    <!-- 在 分支的根目錄建立 travis.yml 編寫設定 -->
+    <!-- travis.yml 貼上下方code -->
+    <!-- # Action 名稱
+    name: Deploy
+    # 觸發時機，當推送到分支 master 時
+    on:
+        push:
+        branches: [ master ]
+    # 執行的工作
+    jobs:
+    # 工作名稱
+    deploy:
+    # 執行工作的虛擬機作業系統
+    runs-on: ubuntu-latest
+    # 工作步驟
+    steps:
+        # 步驟一：複製程式碼
+        - name: checkout
+        # 使用的 actions/checkout 複製程式碼
+        uses: actions/checkout@master
+
+        # 步驟二：編譯及部署
+        - name: buildAndDeploy
+        uses: JamesIves/github-pages-deploy-action@master 
+        # 步驟設定
+        env:
+        GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+        # 使用 master 分支的檔案
+        BASE_BRANCH: master
+        # 部署到 gh-pages 分支
+        BRANCH: gh-pages
+        # 編譯後要上傳的資料夾
+        FOLDER: dist
+        # 執行指令
+        BUILD_SCRIPT: npm install && npm run build
+        # 動作完成後清除檔案
+        CLEAN: true -->
+
+        <!-- 設定 github 參考img: 'travis setting'  -->
+    <script>
+        new Vue({
+            el: '#app',
+            name: 'app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            computed: {
+
+            }
+        })
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>

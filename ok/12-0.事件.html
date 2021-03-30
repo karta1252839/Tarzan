@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- Unicode 查詢 -->
+    <!-- https://www.cns11643.gov.tw/searchQ.jsp?ID=0 -->
+    <!-- onkeydown 鍵盤按鍵標號(keycode) -->
+    <!-- https://keycode.info/ -->
+    <!-- 網路下載阻擋 -->
+    <!-- https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm/related?hl=zh-TW -->
+
+    <!-- 
+        onclick	    滑鼠點擊
+        onkeydown	鍵盤按鍵按下去時
+        onkeyup	    鍵盤按鍵放開時
+        onmouseover	滑鼠移到 HTML 元素上
+        onmouseout	滑鼠移開 HTML 元素
+        onfocus	    滑鼠點到輸入欄位
+        onblur	    滑鼠點輸入欄位外
+        onchange	元素改變時
+        oninput	    表單欄位輸入時
+        onsubmit	表單送出時
+        oncopy	    複製時 
+    -->
+
+    <script>
+        // getElements 只要後面有s都要用 for of才會有反應
+        const btns = document.getElementsByClassName('btn');
+        for (const btns of btn) {
+            btn.onclick = () => {
+
+            }
+        }
+
+    </script>
+
+    <!-- 點連結不會跳頁:  -->
+    <a href="https://google.com" id="mylink">連結</a> <br>
+    <!-- 看看你按哪個鍵:  -->
+    <span id="key"></span>
+
+
+    <script>
+        // event事件阻擋(preventDefault);
+        const link = document.getElementById("mylink");
+        const p = document.getElementById("key");
+        link.onclick = (event) => {
+            const now = new Date();
+            // 判斷秒數為基數執行
+            if (now.getMinutes % 2 == 1) {
+
+            }
+            // 判斷秒數為基數執行
+            const input = prompt('輸入密碼');
+            if (input != '1234') {
+                event.preventDefault();
+            }
+            // 阻止事件預設動作
+            event.preventDefault();
+            alert('上課不要看google')
+        }
+        document.onkeydown = (e) => {
+            p.innerText = e.key;
+        }
+    </script>
+
+    <p id="keytext"></p>
+    <script>
+        const keytext = document.getElementById('keytext');
+        document.onkeydown = () => {
+            keytext.innerHTML += event.key;
+        }
+    </script>
+
+
+</body>
+
+</html>

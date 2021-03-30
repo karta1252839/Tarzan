@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- DOM -->
+    <a href="#" id="link" style="color: blue;">google</a>
+    <script>
+        // log 出來是 RGB
+        console.log($('#link').css('color'));
+        // 加二個class(每個要新增的 class 以空白分隔);
+        $('h1').eq(0).addClass('red big');
+        // .find() 在裡面找符合指定選擇器的元素
+        $('#uli').find('li').eq(2).css('color', 'red');
+
+        // .prev()      同一層的上一個東西，()只抓單一個所以不可以放選擇器
+        // .prevAll()   同一層的所有上面的東西，()裡面可以放選擇器篩選
+        // .next()      同一層的下一個東西，()只抓單一個所以不可以放選擇器
+        // .nextAll()   同一層的所有下面的東西，()裡面可以放選擇器篩選
+        // .siblings()  同一層的其他東西，()裡面可以放選擇器篩選
+    </script>
+
+    <div id="btn1"></div>
+    <script>
+        // 用事件名當函式
+        $('#btn1').click(function (e) {
+            e.preventDefault();
+        });
+        // 有些事件 沒有事件函式
+        $('#btn1').on('click', function () {
+
+        });
+    </script>
+
+    <div id="uli"></div>
+
+    <script>
+        // prepend，append 前，後
+        $('#btn1').click(function (e) {
+            $('#uli').prepend('<li>前面新的</li>');
+            $('#uli').append('<li>後面新的</li>');
+            $(selector).append(content);
+        });
+    </script>
+
+    <div id="myLi"></div>
+    <script>
+        // parent僅上一層; parents上層所有(可放選擇器); 往上找(選擇器第一個)
+        $('#myLi').parent().css('background', 'blue');
+        $('#myLi').parents().css('background', 'red');
+        $('#myLi').closest('li').css('background', 'green');
+
+    </script>
+
+    <!-- 換圖 可以用判斷 -->
+    <img src="./102.jpg" alt="">
+    <input type="button" value="" class="btn">
+    <script>
+        $(document).ready(function () {
+            $('#btn').click(function () {
+                if ($('#img').attr('src') = './102.jpg') {
+                    $('#img').attr('src', './505.jpg');
+                    $(this).val('點我變505');
+                } else {
+                    $('#img').attr('src', './102.jpg');
+                    $(this).val('點我變102');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // index 取得元素是同一層的第幾個
+        $(selector).index();
+    </script>
+
+    <!-- 為何不使用JQ -->
+    <!-- 很多網頁要擺脫JQ 不想被綁死死的，因為如果今天JQ不維護，bootstrap5 移除JQ-->
+</body>
+
+</html>

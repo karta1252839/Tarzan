@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <title id="title">Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // AJAX使用(必須用JQ)
+        // GET---------------------------------
+        $.ajax({
+            url: "https://kktix.com/events.json",
+            method: "GET",
+            // 回來資料的型態
+            dataType: "json",
+            // 成功時的 function
+            success: function (response) {
+                console.log(response.title);
+            },
+            // 失敗時的 function
+            error: function () {
+                console.log('無法取得資料');
+            }
+        });
+
+        // 簡寫版 沒有error function
+        $.get('https://kktix.com/events.json', function (response) {
+            console.log(response.title);
+        }, 'json')
+
+
+        // POST---------------------------------
+        $.ajax({
+            url: "https://kktix.com/events.json/post",
+            method: "post",
+            data: {
+                'title': 'aaa',
+                'body': 'bbbbb',
+                'userID': 1,
+            },
+            // 回來資料的型態
+            dataType: "json",
+            // 成功時的 function
+            success: function (response) {
+                console.log(response.title);
+            },
+            // 失敗時的 function
+            error: function () {
+                console.log('無法取得資料');
+            }
+        });
+
+        // 簡寫版 沒有error function
+        $.get('https://kktix.com/events.json', function (response) {
+            console.log(response.title);
+        }, 'json')
+    </script>
+</body>
+
+</html>
