@@ -16,6 +16,7 @@
 
 <body>
 
+
     <div id="title"></div>
     <p id="update"></p>
     <table id="table" border="1"></table>
@@ -34,7 +35,29 @@
             }
         }, 'json')
     </script>
-    
+
+    <script>
+        axios.get(url)
+        axios.post(url, {
+            'aaa': aaa,
+            'bbb': bbb,
+        })
+            .then(function (response) {
+                console.log(response);
+
+            })
+            .catch(function (error) {
+                console.log(error);
+
+            })
+            .then(function (response) {
+                console.log('response');
+
+            })
+
+
+    </script>
+
 </body>
 
 </html>

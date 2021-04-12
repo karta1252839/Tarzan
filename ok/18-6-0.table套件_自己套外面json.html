@@ -41,20 +41,21 @@
             // 中文翻譯
             language: { url: 'https://cdn.datatables.net/plug-ins/1.10.22/i18n/Chinese-traditional.json' },
             // 控制顯示數量選單的選項
+            // lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
             lengthMenu: [
                 // 數值
-                [30, 50, -1]
+                [30, 50, -1],
                 // 顯示文字
-                [30, 50, 全部]
+                [30, 50, '全部']
             ],
             // 欄位設定
             columnDefs: [{
                 // 目標欄位
                 targets: 1,
                 // 是否可排序
-                orderable:false,
+                orderable: false,
                 // 是否可搜尋
-                searchable:false,
+                searchable: false,
             }]
         });
 
@@ -63,6 +64,7 @@
                 table.row.add([event.title, event.content, event.author, event.name]).draw().node()
             }
         }, 'json')
+
     </script>
 
 </body>

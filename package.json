@@ -1,0 +1,26 @@
+{
+  "name": "Tarzan",
+  "version": "1.0.0",
+  "description": "Tarzan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karta1252839/Tarzan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karta1252839/Tarzan/issues"
+  },
+  "homepage": "https://github.com/karta1252839/Tarzan#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "validator": "^13.5.2"
+  }
+}

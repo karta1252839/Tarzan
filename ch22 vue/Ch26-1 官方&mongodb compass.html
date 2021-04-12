@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+
+    </style>
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app1">
+        <!-- 官方 mongodb npm(但是只用下方別的) -->
+        <!-- https://www.npmjs.com/package/mongodb -->
+        <!-- 別的 mongose -->
+        <!-- https://www.npmjs.com/package/mongose -->
+
+        <!-- mongodb compass (下載這個，ch26-0語法就可以不用記了)(有點類似後端mySql;GUI介面  ) -->
+        <!-- https://www.mongodb.com/try/download/compass -->
+        <!-- 複製 127.0.0.1(複製自己的資料庫名稱) -->
+
+        <!-- 會用到的 -->
+        <!-- 網頁前台 github page -->
+        <!-- 後台程式 heroku (有時候會把東西吃掉) -->
+        <!-- https://www.heroku.com/ -->
+        <!-- 資料庫 MongoDB Atlas -->
+        <!-- https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_apac_taiwan_search_core_brand_atlas_desktop&utm_term=mongodb%20atlas&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624371&gclid=CjwKCAjw3pWDBhB3EiwAV1c5rCE3dpDu68qzO9-P53QOVEHR-RwusS6y4aIbtRvOH48zBk-HkbOCGBoCO6UQAvD_BwE -->
+        <!-- 自動佈署(網頁打包) -->
+        <!-- https://travis-ci.org/ -->
+        <!-- 使用者上傳檔案(職訓伺服器)(因為可能有危險性所以才要這麼麻煩丟來丟去) -->
+
+
+        <!-- 租 網域 (幾乎都是給php) -->
+        <!-- 遠振 -->
+        <!-- 鎖 (獨立IP) -->
+
+    </div>
+
+    <div id="app">
+        <p v-for="item in items">{{ item.id }} : {{ item.price }}</p>
+        <p>{{ app1 }}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            name: 'app',
+            data() {
+                return {
+                    app1:'app3',
+                    items: [
+                        {
+                            id: '1',
+                            price:'aaa'
+                        },
+                        {
+                            id: '2',
+                            price:'aab'
+                        },
+                        {
+                            id: '3',
+                            price:'aac'
+                        },
+                    ]
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+
+            }
+        })
+    </script>
+    <script>
+
+    </script>
+</body>
+
+</html>

@@ -8,8 +8,6 @@
 
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
-    <!-- axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <title id="title">Document</title>
     <style>
@@ -18,11 +16,13 @@
 </head>
 
 <body>
-    
+    <!-- axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script>
         // axios (Vue 官方推薦的 AJAX 套件)
         // https://github.com/axios/axios
-        
+
         // get-------------------------------
         axios.get('https://kktix.com/events.json')
             .then(response => {
@@ -56,6 +56,7 @@
                 console.log('請求結束');
             });
     </script>
+
 </body>
 
 </html>

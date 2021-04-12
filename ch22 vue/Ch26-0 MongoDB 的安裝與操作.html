@@ -8,9 +8,9 @@
 
     <!-- vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    
+
     <style>
-        
+
     </style>
 
     <title>Document</title>
@@ -20,10 +20,148 @@
 <body>
     <div id="app">
 
+        <!-- 可以直接開啟 -->
+        <!-- srart.bat -->
+
+        <!-- 安裝 -->
         <!-- mongodb -->
         <!-- https://www.mongodb.com/products/compass -->
         <!-- Azure Databases 套件 -->
         <!-- https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb -->
+
+        <!-- 操作 1 -->
+        <!-- 1.下載完成 開啟資料夾 新建筆記本並改名為 mongod.config 並輸入
+            dbpath=.\data (貼上原路徑) 
+            logpath=.\log\log.txt (貼上原路徑) 
+            並且在 log 新建 log.txt -->
+        <!-- 2.建立 資料夾 名為 data -->
+        <!-- 3.啟動 mongod.exe(免安裝版本(點二下會消失)) 需透過cmd -->
+        <!-- 5.輸入 mongod --config C:\Users\ASUS\Desktop\mongodb\mongod.config -->
+
+        <!-- 操作 2 (下次可以直接開啟) -->
+        <!-- 1.新建檔案 srart.bat (bat 是 windows的指令檔 ) -->
+        <!-- 2. 輸入 cd C:1Users\USERIDesktop\nongodb\bin
+            moncod --config C:\Users\ASUS\Desktop\mongodb\mongod.config -->
+
+
+        <!-- mongodb 使用解說 -->
+        <!-- mongod.exe -->
+        <!-- 資料庫 -->
+
+        <!-- mongo.exe -->
+        <!-- 下指令的終端機 -->
+
+        <!-- vs coed 安裝 Azure Databases 套件 -->
+        <!-- 左邊有顯示安裝圖示 -->
+        <!-- 按下並按上方有個插頭 -->
+        <!-- 點第二個(Azure CosmosDB for MongoDB API) -->
+
+        <!-- 新增指令 1(但之後會用 新增指令 2) -->
+        <!-- 開啟 mongo.exe -->
+        <!-- 輸入 var insert = db.admin.insert([("accouat": "user!", "passvord":"userpass!", "enail":"aaa@bbb.com")]) -->
+        <!-- 重新整理 test admin會有資料 -->
+
+        <!-- 新增指令 2 -->
+        <!-- 1. 開啟npm終端機 cmd -->
+        <!-- 2. 先導到MongoDB的資料夾路徑 CD /d C:\Users\ASUS\Desktop\mongodb\bin -->
+        <!-- 3. mongo -->
+
+        <!-- insert[0] (看不到 加入的內容) -->
+        <!-- 5. use test -->
+        <!-- 6. db.admin.insert([{"account": "user2", "password":"userpass2", "email":"aaa@bbb.com"}]) -->
+
+        <!-- 新增MongoDB  -->
+        <!-- insert[1]; insertOne(僅可放入一筆資料 可看到 加入的內容) -->
+        <!--  db.admin.insertOne([{"account": "user2", "password":"userpass2", "email":"aaa@bbb.com"}]) -->
+
+        <!-- insert[2]; insertMany(可放入多筆資料 可看到 加入的內容) -->
+        <!--  db.admin.insertMany([{"account": "user2", "password":"userpass2", "email":"aaa@bbb.com"}]) -->
+
+        <!-- // 也是多筆新增，但是僅回傳比數
+            // ordered: 當發生錯誤時是否停止執行
+            > db.collection.insert([{"name": "aaa"}, {"name": "bbb"}], {ordered: false})
+            BulkWriteResult({
+            "writeConcernErrors" : [ ],
+            "nInserted" : 0,
+            "nUpserted" : 0,
+            "nMatched" : 0,
+            "nModified" : 0,
+            "nRemoved" : 0,
+            "upserted" : [ ]
+            }) -->
+
+        <!-- 索引 -->
+        <!-- 建立索引 (避免資料重複) -->
+        <!-- db.col.createIndex({"account":1}, {unique: true}) -->
+
+        <!-- 顯示索引 -->
+        <!-- db.admin.getIndexes() -->
+
+        <!-- 刪除索引 -->
+        <!-- db.admin.dropIndex("account_1") -->
+
+        <!-- 查詢 -->
+        <!-- 顯示所有資料庫 -->
+        <!-- show dbs -->
+
+        <!-- 進入某資料庫 -->
+        <!-- use db(test) -->
+
+        <!-- db.collection.find().limit(1).skip(1).pretty().sort() 查詢 -->
+        <!-- .limit() 為資料比數，可不加; .skip() 為略過幾筆資料，可不加; .pretty() 為是否格式化輸出，可不加; .sort( { price : 1 (-1倒序) } ) 為資料排序 -->
+
+        <!-- 為資料表名稱 -->
+        <!-- collection -->
+
+        <!-- .find(query, projection)，query 為查詢 projection 顯示欄位 -->
+
+
+        <!-- 查詢動作 -->
+        <!-- db.admin.find().pretty() 查全部 -->
+        <!-- $gte - 大於等於 .find( { price: {$gte:200 } } )
+            gt - 大於 .find( { price: {$gt:200 } } )
+            lte - 小於等於 .find( { price: {$lte:200 } } )
+            lt - 小於 .find( { price: {$lt:200 } } )
+            in - 包含 .find( { type: {$in:["food"]} } )  || .find( { type: {$in:[/user/]} } ).pretty() 
+            nin - 不包含 .find( { type: {$nin:["food"]} } )
+            and - 和 .find( { $and: [ { price: { $lt: 200 } }, { name: "ABCD"} ] } )
+            or - 或 .find( { $or: [ { price: { $lt: 200 } }, { name: "ABCD"} ] } )
+            not - 否 .find( { price: { $not: { $gt: 200 } } } )
+            更新 -->
+
+        <!-- 篩選練習 (一次篩選二個) -->
+        <!-- db.admin.find( { "account": {$in:[/user/]} } , { "email": {$nin:["com"]} } ) .pretty() -->
+
+        <!-- cursor 修改輸出資料(很少用到 可以不用記) -->
+        <!-- var cursor = db.admin.find() -->
+        <!-- while(cursor.hasNext()){
+                obj = cursor.next();
+                print("user account" + obj.account);
+            } -->
+
+        <!-- 更新 -->
+        <!-- db.collection.update({查詢條件},{修改},{選項}) -->
+        <!-- db.collection.update({ "account": {$in:[/user/] },{$set:{account:"user123456"}}) -->
+        <!-- 會出現 例如:(
+                nMatched:符合條件; nModified修改; nMatched 找的到資料就修改，找不到則新增
+                WriteResult({ "nMatched" : 1, "nUpserted" 0, "nModified" : 1 })
+                ) -->
+        <!-- query - 查詢條件; update - 更新資料，$set 修改指定值，$inc 為加減值，$mul 為乘值
+            upsert - 如果找不到資料就新增;  -->
+        <!-- db.collection.update({ "account": {$in:[/user/] }},{$set:{account:"user123456"}},{upsert:true}) -->
+        <!-- ,{multi:true} multi - 預設只找一筆資料，設定 true 取代多筆資料 -->
+        <!-- db.collection.update({ "account": {$in:[/user/] }},{$set:{account:"user123456"}},{multi:true,upsert:true}) -->
+
+
+        <!-- 刪除 -->
+        <!-- 刪除一筆
+        db.col.deleteOne({'name':'ABC'}) -->
+        <!-- 刪除多筆
+        db.col.deleteMany({'name':'ABC'}) -->
+        <!-- db.admin.deleteMany({ "account": {$in:[/user/]} }) -->
+
+        <!--  -->
+        <!-- ,{} -->
     </div>
 
 
@@ -35,15 +173,15 @@
 
             },
             methods: {
-                
+
             },
             computed: {
-                
+
             }
         })
     </script>
     <script>
-        
+
     </script>
 </body>
 
