@@ -1,0 +1,36 @@
+git外掛套件 -------------------------------------
+// git 描述(後面有灰字)
+eamodio.gitlens
+// git 樹狀圖
+mhutchie.git-graph
+
+外掛套件 -------------------------------------
+//註解
+tobermory.es6-string-html
+
+網址 -------------------------------------
+漸層色網址(code
+https://mycolor.space/
+漸層色網址(code
+https://uigradients.com/#SeaBlizz
+主體色系設計(設計用
+https://colors.eva.design/
+一開始設定的css(reset css)
+https://meyerweb.com/eric/tools/css/reset/
+google fonts ( 想要的字體點進去之後 找到Select this style 複製code 到要的地方放置font
+https://fonts.google.com/
+背景 canvas
+https://vincentgarreau.com/particles.js/#nasa
+Carouse 移動旋轉木馬
+https://owlcarousel2.github.io/OwlCarousel2/demos/demos.html
+textillate.js 文字動畫
+https://textillate.js.org/
+Sass 内建函数用法一览
+http://jimyuan.github.io/blog/2017/06/07/sass-preset-functions-learning.html
+doodle 有CDN
+https://css-doodle.com/
+code文字 (安裝完 看圖片設定vs code
+https://github.com/microsoft/cascadia-code/releases
+date 時間 JS
+https://momentjs.com/
+
