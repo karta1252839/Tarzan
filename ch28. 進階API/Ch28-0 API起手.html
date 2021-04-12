@@ -18,15 +18,117 @@
 </head>
 
 <body>
+    <!-- vuex 是存在瀏覽器 -->
+    <!-- session 是存在後端sever -->
+
     <!-- 安裝使用套件 -->
     <!-- npm i axios -->
     <!-- npm i vue-axios -->
 
+    <!-- 存一些認證的資訊 -->
+    <!-- npm i express-session -->
+    <!-- 連線階段存在 mongoDB 裡面(斷線後台使用者狀態不會跑掉) -->
+    <!-- npm i connect-mongo -->
+
+
     <!-- main.js -->
     <script>
+        // node原有
         import fs from "fs";
+        // 套件
         import axios from "axios";
         import VueAxios from "vue-axios";
+
+        import session from "express-session";
+        import connectMongo from "connect-mongo";
+
+        const connection = Mongoose.connection
+
+        export default {
+            connection
+        }
+
+    </script>
+
+    <!-- index.js -->
+    <script>
+        const MongoStore = connectMongo(session)
+
+        // session 設定
+        app.use(session({
+            // 加密認證資料用
+            secret: 'session',
+            // 登入狀態有效毫秒
+            cookie: {
+                maxAge: 1000 * 60 * 30
+            },
+            // 是否保存沒有修改過的連線狀態
+            saveUninitialized: false,
+            // 是否每次重新計算過期時間
+            rolling: true,
+            // 存入 mongoDB
+            store: new MongoStore({
+                mongooseConnection: db.connection
+            })
+        }))
+
+        app.post('/login', async (req, res) => {
+            // 判斷近來是否json 這邊要用incl (因為ajax後面會幫你加charset=utf-8)
+            if (!req.headers['content-type'].includes('application/json')) {
+                res.status(400)
+                res.send({ success: false, message: '格式錯誤' })
+            }
+            try {
+                const result = db.user.find(
+                    {
+                        account: req.body.account,
+                        password: req.body.password,
+                    }
+                )
+                if (result.length > 0) {
+                    // 設定session 使用者狀態
+                    const account = result[0].account
+                    req.session.user = result[0]
+
+                    res.status(200)
+                    res.send({ success: true, message: '', account })
+                } else {
+                    res.status(200)
+                    res.send({ success: false, message: '帳號密碼錯誤' })
+                }
+            } catch (error) {
+                res.status(400)
+                res.send({ success: false, message: '帳號密碼錯誤' })
+            }
+        })
+
+        // 檢查有沒有登入
+        app.get('/checeksession', async (req, res) => {
+            res.status(200)
+            res.send({ success: true, message: '', user: req.session.user })
+        })
+
+        // 登出
+        app.get('/logout', async (req, res) => {
+            // 刪除狀態
+            req.session.destory((error) => {
+                // 刪除出錯
+                if (error) {
+                    res.status(500)
+                    res.send({ success: false, message: '刪除出錯' })
+                } else {
+                    // 清除瀏覽器的認證資訊
+                    res.clearCookie()
+                    res.send({ success: true, message: '' })
+                }
+            })
+        })
+
+        if (req.query.id === undefined) {
+            res.status(400)
+            res.send({ success: false, message: '欄位不正確' })
+            return
+        }
     </script>
 
 </body>
