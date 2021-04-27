@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- v-for -->
+    <div id="app">
+        <div v-for="item in items" :key="item.id">
+            {{ item }}
+        </div>
+        <input v-model="data" type="text" />
+
+        <!-- <button @click="btnClick()">GO</button> -->
+        <!-- <p>{{ message }}</p> -->
+    </div>
+
+    <script>
+        // v-for
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'app',
+                num: 0.3,
+            },
+            data() {
+                return {
+                    key: value
+                }
+            },
+            methods: {
+                name() {
+                    
+                }
+            },
+            
+        });
+    </script>
+
+</body>
+
+</html>

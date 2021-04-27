@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="checkGames" type="checkbox" value="生化危機" />
+        <label for="生化危機">生化危機</label>
+        <input v-model="checkGames" type="checkbox" value="模擬飛行" />
+        <label for="模擬飛行">模擬飛行</label>
+        <input v-model="checkGames" type="checkbox" value="賽爾達傳說" />
+        <label for="賽爾達傳說">賽爾達傳說</label>
+        <p>您選擇的遊戲是: {{checkGames}} </p>
+        <!-- <button @click="btnClick()">GO</button> -->
+        <!-- <p>{{ message }}</p> -->
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                checkGames:[],
+            },
+            
+        });
+    </script>
+
+</body>
+
+</html>

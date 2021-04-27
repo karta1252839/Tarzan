@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    为一个路由(画面)组合多个组件,完成整个页面。
+    <!-- router-view[ name ] -->
+    <!-- components -->
+
+    ## 实战演习
+    setting/Header .vue
+    setting/Sidebar.vue
+    setting/Detail.vue
+    router/index.js
+    App.vue
+
+    ### setting/Header.vue
+    <template>
+        <div>
+            <h1>标題栏</h1>
+            <div>欢迎来到小马vue.js课程系列</div>
+        </div>
+    </template>
+
+    ### setting/Sidebar.vue
+    <template>
+        <div>
+            <h1>边条</h1>
+        </div>
+    </template>
+
+    ### setting/Detail.vue
+    <template>
+        <div>
+            <h1>详细显示</h1>
+            <p>vue.js是一套用于构建用户界面的浙进式框架。Vue的核心
+                第三方库或既有项目整合。另一方面,当与现代化的工具链以及
+                够为复杂的单页应用提供驱动。</p>
+        </div>
+    </template>
+
+    ### router/index.js
+    <script>
+        import SettingDetail from '@/components/setting/Detail'
+        import SettingHeader from '@/components/setting/Header'
+        import settingSidebar from '@/components/setting/Sidebar'
+        routes: [
+            {
+                path: '/',
+                name: 'Home',
+                components: {
+                    myHeader: SettingHeader,
+                    mySidebar: SettingSidebar,
+                    myDetail: SettingDetail,
+                },
+            }]
+    </script>
+
+    ### App.vue
+    <template>
+        <div id="app">
+            <table width="100%">
+                <tr>
+                    <td colspan="2" style="background-color:darkgoldenrod">
+                        <router-view name="myHeader"></router-view>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%" style="background-color:thistle">
+                        <router-view name="mySidebar"></router-view>
+                    </td>
+                    <td width="80%" style="background-color:aquamarine">
+                        <router-view name="myDetail"></router-view>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+</body>
+
+</html>

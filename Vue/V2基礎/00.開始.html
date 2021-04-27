@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="myapp">
+        <!-- data -->
+        <div v-if="seen">v-if 如果是 則出現</div>
+        <h3>v-for</h3>
+        <ol>
+            <li v-for="game in games">{{ game.title }} : {{game.price}} </li>
+        </ol>
+        <p>我是:{{model}}</p>
+        <input v-model="model">
+        <!-- methods -->
+        <p>btnClick function{{click}}</p>
+        <button v-on:click="btnClick('點擊')">點擊</button>
+    </div>
+
+    <script>
+        var myapp = new Vue({
+            el: '#myapp',
+            data: {
+                seen: true,
+                games: [
+                    { title: '遊戲A', price: 111 },
+                    { title: '遊戲B', price: 222 },
+                    { title: '遊戲C', price: 333 },
+                ],
+                model: '請輸入關鍵字',
+                click: 'aclick'
+            },
+            methods: {
+                // 
+                btnClick: function (fclick) {
+                    this.click = fclick
+                }
+            },
+        })
+    </script>
+
+    <!-- component (可以放html，並且切塊排版) -->
+
+    <div id="component">
+        <ol>
+            <game-item v-for="item in games" v-bind:game="item"></game-item>
+        </ol>
+    </div>
+
+    <script>
+        Vue.component('game-item', {
+            props: ['game'],
+            template: '<li> {{game.title}} </li>'
+        })
+        var component = new Vue({
+            el: '#component',
+            data: {
+                games:[
+                    {title:'UNO'},
+                    {title:'UNO1'},
+                    {title:'UNO2'},
+                ]
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>

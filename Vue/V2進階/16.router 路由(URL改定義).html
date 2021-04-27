@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    重定向指令:redirect
+    路由别名:alias
+
+    ##实演习
+    About.vue
+    router/index.js
+    App.vue
+
+    ### About.vue
+    <template>
+        <div>
+            <h1>About Page</h1>
+        </div>
+    </template>
+
+    ### router/index.js
+
+    <script>
+        import About from '@/components/About'
+        {
+            path: '/about',
+                name: 'About',
+                    component: About,
+                        alias: '/aboutme',
+        },
+        {
+            path: '/curry',
+                // redirect: '/player/1',
+                // redirect: { name: 'About' },
+                redirect: '/aboutme',
+        }
+    </script>
+
+    ### App.vue
+
+    <template>
+        <div id="app">
+            <router-link to="/">Home</router-link>
+            <router-link to="/about">About</router-link>
+            <router-link to="/player/1">player1</router-link>
+            <router-link to="/curry">curry</router-link>
+            <hr>
+            <router-view></router-view>
+        </div>
+    </template>
+</body>
+
+</html>

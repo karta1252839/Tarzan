@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>身世之謎</h1>
+        <show-member-info :name="Kom" :age="50" :detail="{address:'earth',language:'世界通'}"></show-member-info>
+    </div>
+
+    <script>
+        Vue.component('show-member-info', {
+            props: {
+                name: {
+                    type: String,
+                    required: true,
+                },
+                age: {
+                    type: Number,
+                    A: function (value) {
+                        return value >= 0 && value <= 130;
+                    }
+                },
+                detail: {
+                    type: Object,
+                    B: function () {
+                        return {
+                            address:'US',
+                            language:'English',
+                        }
+                    }
+                },
+            },
+            template: '<div> 性別: {{this.name}} <br> 年齡: {{this.age}} <br> 地址: {{this.detail.address}} <br> 語言: {{this.detail.language}} <br> </div>',
+
+        });
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                myName: 'Kom',
+            },
+            methods: {
+
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>

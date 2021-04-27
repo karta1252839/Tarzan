@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- watch -->
+    <div id="watch">
+        <p>日幣賣: {{ price }} ，含稅價:{{ priceA }} ，轉換人民幣:{{ priceB }} </p>
+        <button v-on:click="btnClick(10000)">加價10000</button>
+    </div>
+
+    <script>
+        // watch (與 computed 屬性類似，用於觀察變量的變化，然後相應的處理 (我從 angular 而來) )
+        var watch = new Vue({
+            el: '#watch',
+            data: {
+                // price:29980 (這邊改為0 在外面顯示就可連動)
+                price: 0,
+                priceA: 0,
+                priceB: 0,
+            },
+            watch: {
+                price: function (newVal, oldVal) {
+                    console.log(newVal, oldVal);
+                    this.priceA = Math.round(this.price * 1.08);
+                    this.priceB = Math.round(this.priceA / 16.75);
+                }
+            },
+            methods: {
+                btnClick: function (newPrice) {
+                    this.price += newPrice;
+                }
+            },
+
+        });
+        watch.price = 29980;
+    </script>
+
+</body>
+
+</html>

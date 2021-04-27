@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <select name="likeA" id="likeA" v-model="likeA">
+            <option value="">A</option>
+            <option value="">B</option>
+            <option value="">C</option>
+            <option value="">D</option>
+            <option value="">E</option>
+            <option value="">F</option>
+        </select>
+
+        <select name="likeB" id="likeB" v-model="likeB" multiple>
+            <option value="">A</option>
+            <option value="">B</option>
+            <option value="">C</option>
+            <option value="">D</option>
+            <option value="">E</option>
+            <option value="">F</option>
+            <option value="">G</option>
+            <option value="">H</option>
+            <option value="">I</option>
+            <option value="">J</option>
+            <option value="">K</option>
+            <option value="">L</option>
+        </select>
+        
+
+
+        <h3>選擇結果</h3>
+        <p>您最愛: {{ likeA }} </p>
+        <p>我的明星球員: {{ likeB }} </p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                likeA:null,
+                likeB:[],
+            },
+            methods: {
+
+            },
+        });
+    </script>
+
+</body>
+
+</html>

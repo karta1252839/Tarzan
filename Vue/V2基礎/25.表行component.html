@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <table border="1">
+            <tr>
+                <td>編號</td>
+                <td>遊戲名稱</td>
+            </tr>
+            <!-- 加上is可在表單內運行 -->
+            <tr is="my-row1"></tr>
+            <tr is="my-row2"></tr>
+            <tr is="my-row3"></tr>
+            <!-- <my-row1></my-row1>
+            <my-row2></my-row2>
+            <my-row3></my-row3> -->
+            
+        </table>
+    </div>
+
+    <script>
+        Vue.component('my-row1', {
+            template: '<tr><td>(1)</td><td>賽爾達傳說(3/3)</td></tr>'
+        })
+        Vue.component('my-row2', {
+            template: '<tr><td>(2)</td><td>新馬里奧賽車(4/28)</td></tr>'
+        })
+        Vue.component('my-row3', {
+            template: '<tr><td>(3)</td><td>噴射烏賊娘(5/15)</td></tr>'
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>

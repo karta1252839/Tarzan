@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        安裝路由
+        <!-- npm i vue-router --save --save-exact -->
+
+        路由設定
+        1.src 的main.js設定
+        <!-- import router from './router' -->
+        <!-- 
+        new Vue({
+        el: '#app',
+        router,
+        components: { App },
+        template: '<App/>'}) 
+        -->
+        2.src router內的index.js設定
+        <!-- import Router from 'vue-router' -->
+        <!-- 加入每個在components內新增路由的檔案名稱 -->
+        <!-- import HelloWorld from '@/components/HelloWorld' -->
+        <!-- 
+        export default new Router({
+        routes: [
+        {
+        path: '/',
+        name: 'HelloWorld',
+        component: HelloWorld
+        }
+        ]}) 
+        -->
+
+        3.App.vue
+        <!-- router-link 默認 <a> 標籤 -->
+        <!-- <router-link to="/">HOME</router-link> |
+        <router-link to="/about">關於</router-link> |
+        <router-link to="/news">新聞</router-link> | -->
+
+
+        4.components 新增檔案
+        <!-- About.vue -->
+    </div>
+
+    <script>
+
+    </script>
+
+</body>
+
+</html>

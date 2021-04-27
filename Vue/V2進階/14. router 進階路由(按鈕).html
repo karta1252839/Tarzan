@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <template>
+        <button @click="btnclick(1)">库里</button>
+        <button @click="btnclick(2)">哈登</button>
+        <hr>
+        <router-link :to="( name: 'Player', params: ( uid: 1 ))">库里</router-link>
+        <router-link :to="( path: '/player/2/stats')">哈登</router-link>
+    </template>
+
+    <script>
+        var app = new Vue({
+            methods: {
+                btnClick(uid) {
+                    this.$router.push({ path: '/player/$(uid)' });
+                    // this.$router.push({ path: '/player/${uid}/stats' });
+                    // this.$router.push({ name: 'Player', params: { uid: uid } });
+                    // this.$router.push({ path: '/player', query: { uid: uid } }); //url-get参数写法
+                    // 前一頁
+                    // this.$router.go(-1);
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

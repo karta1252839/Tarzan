@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 數據:固定值，變量:傳遞不固定 -->
+    <div id="app">
+        <div>請輸入您的名字<input v-model="myName" type="text" /></div>
+        <hr>
+        <!-- pname 傳送命名 p 開頭 -->
+        <test-result :pname="myName"></test-result>
+
+
+    </div>
+
+    <script>
+        Vue.component('test-result', {
+            props: ['pname'],
+            template: '<h3>您好，{{pname}} </h3>',
+
+        });
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                myName: 'Kom',
+            },
+            methods: {
+
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>

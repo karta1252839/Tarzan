@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 頁面 -->
+    新增
+    <!-- player/Profile.vue -->
+    <!-- player/Stats.vue -->
+    <!-- Player.vue -->
+    修改
+    <!-- router/index.js -->
+    <!-- Player.vue -->
+
+    ### Player/Profile.vue
+    <template>
+        <div>
+            <h2>球员简介:(($route.params.uid))</h2>
+        </div>
+    </template>
+
+    ### Player/stats.vue
+    <template>
+        <div>
+            <h2>球员数据:(($route.params.uid)j</h2>
+        </div>
+    </template>
+
+    ### router / index.js
+    <script>
+        import playerProfile from '@/components/Player/Profile'
+        import playerStats from '@/components/player/Stats'
+        export default new Router({
+            path: '/player/:uid',
+            name: 'Player',
+            component: Player,
+            children: [
+                {
+                    path: 'profile',
+                    component: playerProfile
+                },
+                {
+                    path: 'stats',
+                    component: playerStats
+                },
+            ]
+        })
+    </script>
+
+    ### Player.vue
+    <template>
+        <div>
+            <h1>球员页面</h1>
+            <ul>
+                <li>编号:{{detail.uid}}</li>
+                <1i>名字:{{detail.name}}</1i>
+                <1i>得分:{{detail.point}}</1i>
+            </ul>
+            <router-link :to="profile">简介</router-link>
+            <router-link :to="stats">数据</router-link>
+            <hr>
+            <router-view></router-view>
+        </div>
+    </template>
+
+    <script>
+        export default {
+            data() {
+                return {
+                    detail: {},
+                    profile: '',
+                    stats: '',
+                };
+            },
+            mounted() {
+                this.detail = this.getPlayer(this.$route.params.uid);
+                this.profile = '/player/' + this.$route.params.uid + '/profile';
+                this.stats = '/player/' + this.$route.params.uid + '/stats';
+            },
+            beforeUpdate(to, from, next) {
+                this.detail = this.getPlayer(to.params.uid);
+                this.profile = '/player/' + to.params.uid + '/profile';
+                this.stats = '/player/' + to.params.uid + '/stats';
+                next();
+            },
+        }
+    </script>
+
+
+
+</body>
+
+</html>

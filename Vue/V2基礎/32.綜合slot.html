@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <nba-all-star c="奧尼多" pf="加內特">
+            <span slot="sf">皮尼爾</span>
+            <span slot="sg">傑森東</span>
+            <span slot="pg">麥可喬都</span>
+        </nba-all-star>
+    </div>
+
+
+    <script>
+        // 乾淨的文本 直接插入整段DOM
+        Vue.component('nba-all-star', {
+            props: ['c', 'pf'],
+            template: '<div>'
+                + '<div> 中鋒:{{ c }}</div>'
+                + '<div> 大前:{{ pf }}</div>'
+                + '<div>小前:<slot name="sf"></slot></div>'
+                + '<div>小前:<slot name="sg"></slot></div>'
+                + '<div>小前:<slot name="pg"></slot></div>'
+                + '</div > ',
+        });
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+            },
+            methods: {
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>

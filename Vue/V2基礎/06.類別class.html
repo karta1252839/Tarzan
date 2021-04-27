@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+
+        .big {
+            font-weight: bold;
+            font-size: 64px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- class 綁定對象 -->
+    <div id="app">
+        <div :class="myClass">紅色變化樣式</div>
+        <button @click="btnClick">變換</button>
+    </div>
+
+    <script>
+        // app
+        var app = new Vue({
+            el: '#app',
+            data: {
+                myClass: {
+                    active: true,
+                    big: true,
+                }
+            },
+            methods: {
+                btnClick:function(){
+                    this.myClass.active = !this.myClass.active;
+                    this.myClass.big = !this.myClass.big;
+                }
+            },
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    路由屬性props
+
+    User.vue
+    router / index.js
+    App.vue
+
+    ### User.vue
+    <template>
+        <div>
+            <h1>User</h1>
+            <p>uid={{ uid }}, {{ nationality }}</p>
+            <p>$route.params.uid={{ $route.params.uid }}</p>
+            <p>$route.params.uid={{ $route.params.nationality }}</p>
+        </div>
+    </template>
+    <script>
+        export default {
+            name: "User",
+            props: ['uid', 'nationality']
+        };
+    </script>
+
+    ### router / index.js
+    <script>
+        import User from '@/components/User'
+        {
+            path: '/',
+                name: 'Home',
+                    component: Home,
+        }, {
+            path: '/user/:uid/:nationality',
+                name: 'User',
+                    component: User,
+                        // props 必須確認
+                        props: true,
+        }
+    </script>
+
+    ### App.vue
+    <template>
+        <div id="app">
+            <router-link to="/">Home</router-link>
+            <router-link to="/user/1/usa">User1</router-link>
+            <router-link to="/user/2/china">User2</router-link>
+            <router-link to="/user/3/korea">User3</router-link>
+            <hr>
+            <router-view></router-view>
+        </div>
+    </template>
+    
+</body>
+
+</html>

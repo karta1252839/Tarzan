@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>您的成績評價</h1>
+        <test-result score="50"></test-result>
+        <test-result score="65"></test-result>
+        <test-result score="90"></test-result>
+        <test-result score="100"></test-result>
+    </div>
+
+    <script>
+        Vue.component('test-result', {
+            props: ['score'],
+            template: '<div><strong> {{score}}分, {{testResult}} </strong></div>',
+            computed: {
+                testResult: function () {
+                    var strResult = '';
+                    if (this.score < 60)
+                        strResult = '不及格';
+                    else if (this.score < 90)
+                        strResult = '中等生';
+                    else if (this.score <= 100)
+                        strResult = '資優生';
+                    return strResult;
+                },
+            },
+        });
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>

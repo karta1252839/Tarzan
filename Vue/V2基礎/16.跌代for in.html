@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- v-for -->
+    <div id="app">
+        <p v-for="(item, index) in messages">
+            {{index}} : {{item}}
+        </p>
+        <!-- <button @click="btnClick()">GO</button> -->
+        <!-- <p>{{ message }}</p> -->
+    </div>
+
+    <script>
+        // v-for
+        var app = new Vue({
+            el: '#app',
+            data: {
+                messages:{
+                    A:111111,
+                    B:222222,
+                    C:333333,
+                    D:444444,
+                    E:555555,
+                    F:666666,
+                }
+            },
+            
+        });
+    </script>
+
+</body>
+
+</html>

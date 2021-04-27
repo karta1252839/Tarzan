@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>選擇性別</h3>
+        <input v-model="radioA" type="radio" value="男" id="male" />
+        <label for="male">男</label>
+        <br>
+        <input v-model="radioA" type="radio" value="女" id="female" />
+        <label for="female">女</label>
+        
+        <h3>選擇愛好</h3>
+        <input v-model="radioB" type="radio" value="玩遊戲" id="game" />
+        <label for="game">玩遊戲</label>
+        <br>
+        <input v-model="radioB" type="radio" value="看電影" id="movie" />
+        <label for="movie">看電影</label>
+
+        <h3>選擇結果</h3>
+        <p>性別: {{radioA}} </p>
+        <p>愛好: {{radioB}} </p>
+        <!-- <button @click="btnClick()">GO</button> -->
+        <!-- <p>{{ message }}</p> -->
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                radioA:'',
+                radioB:'',
+            },
+
+        });
+    </script>
+
+</body>
+
+</html>
